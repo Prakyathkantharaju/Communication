@@ -1,16 +1,13 @@
+# This setup of socket object is same as the regular UDP
 import socket
 import sys
 
 HOST, PORT = "localhost", 9999
-data = "".join(sys.argv[1:])
-
-# SOCK_DGRAM is the socket type to use for UDP sockets
+data =  test
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(('localhost', 51005))
-# As you can see, there is no connect() call; UDP has no connections.
-# Instead, data is directly sent to the recipient via sendto().
 sock.sendto(bytes(data + "\n", "utf-8"), (HOST, PORT))
 received = str(sock.recv(1024), "utf-8")
-
-print("Sent:     {}".format(data))
-print("Received: {}".format(received))
+# printing out the data
+print(f'Sent:     {data}')
+print(f'Received: {recevied}')'

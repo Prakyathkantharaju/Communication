@@ -19,7 +19,6 @@ class UDP():
         self.sock.close()
 
 if __name__ == "__main__":
-    MESSAGE = b'test'
     sock = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
     sock.sendto(MESSAGE, ('localhost', 5005))

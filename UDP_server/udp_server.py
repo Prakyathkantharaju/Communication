@@ -1,12 +1,6 @@
+# General imports
 import socketserver
 import threading, time
-
-class data(object):
-    def __init__(self):
-        self.my_data = 1
-
-
-
 
 class UDPrequest(socketserver.BaseRequestHandler, data):
     # def data(self):
@@ -23,17 +17,25 @@ class UDPrequest(socketserver.BaseRequestHandler, data):
 class ThreadedUDPServer(socketserver.ThreadingMixIn, socketserver.UDPServer):
     pass
 
+
+# I am showing two instance of application here. First one is server running in a while loop.
+# The second option is to use the server in a threading.
+
 if __name__ == "__main__":
     HOST, PORT = "localhost", 9999
     # This is for server forever
+
+
+
+
     # with socketserver.UDPServer((HOST, PORT), UDPrequest) as server:
         # server.serve_forever()
+
+
+
     # threading option
     server = ThreadedUDPServer((HOST, PORT), UDPrequest)
     test = server.RequestHandlerClass
-    # test.setup()
-    test.my_data = data()
-    # print(test.data())
     with server:
         ip,port = server.server_address
         server_thread = threading.Thread(target= server.serve_forever)
@@ -41,12 +43,9 @@ if __name__ == "__main__":
         server_thread.start()
         print("Server loop running in thread")
         i = 1
-        while i < 1000:
+        while i < 100:
             i += 1
             time.sleep(1)
             threading.Lock()
-            # server.my_data = i
-            print(test.my_data.my_data)
-            test.my_data.my_data = i
             print('in the loop')
         server.shutdown()

@@ -25,6 +25,11 @@ At this time the repository contains examples of following communication:
 - One function **start_comm** will start the communication and return the instance of the object.
 - The **read_comm** will start reading instance buffer and get the data for both char and double.
 
+  ```
+  t = start_comm()
+  read_comm(t)
+  ```
+  if you want to change the port number the port information is in the `start_comm` and the `read_comm` file.
 
 ## Encoding:
 **I am using UTF-8 encoding**
